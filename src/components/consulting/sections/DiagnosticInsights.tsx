@@ -235,13 +235,15 @@ const DiagnosticOverview: React.FC<{
                             <div key={cat.name} className="mb-4 last:mb-0">
                                 <div className="flex items-center justify-between p-2 bg-gray-100 rounded-t-md">
                                     <h4 className="font-bold text-gray-700">{cat.name}</h4>
-                                    <span className={`font-bold px-2 py-0.5 rounded-full text-sm ${getMaturityColor(cat.score, 'bg')} ${getMaturityColor(cat.score, 'text')}`}>{cat.score.toFixed(1)}</span>
+                                    {/* Score hidden as per request */}
+                                    {/* <span className={`font-bold px-2 py-0.5 rounded-full text-sm ${getMaturityColor(cat.score, 'bg')} ${getMaturityColor(cat.score, 'text')}`}>{cat.score.toFixed(1)}</span> */}
                                 </div>
                                 <div className="border border-t-0 border-gray-200 rounded-b-md p-2">
                                   {cat.focusAreas.map(fa => (
                                     <button key={fa.name} onClick={() => onCategoryClick(cat.name)} className="w-full flex items-center justify-between py-1 px-2 hover:bg-gray-50 rounded transition-colors text-left">
                                       <p className="text-sm text-gray-600">{fa.name}</p>
-                                      <span className={`font-medium text-xs px-2 py-0.5 rounded-full ${getMaturityColor(fa.score, 'bg')} ${getMaturityColor(fa.score, 'text')}`}>{fa.score.toFixed(1)}</span>
+                                      {/* Score hidden as per request */}
+                                      {/* <span className={`font-medium text-xs px-2 py-0.5 rounded-full ${getMaturityColor(fa.score, 'bg')} ${getMaturityColor(fa.score, 'text')}`}>{fa.score.toFixed(1)}</span> */}
                                     </button>
                                   ))}
                                 </div>
@@ -278,7 +280,8 @@ const FocusAreaCard: React.FC<{ area: FocusArea }> = ({ area }) => {
       <button onClick={() => setIsExpanded(!isExpanded)} className="w-full p-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
         <h4 className="font-semibold text-gray-800">{area.title}</h4>
         <div className="flex items-center space-x-3">
-          <span className={`font-bold px-2 py-0.5 rounded-full text-xs ${getMaturityColor(score, 'bg')} ${getMaturityColor(score, 'text')}`}>{score.toFixed(1)}</span>
+          {/* Score hidden as per request */}
+          {/* <span className={`font-bold px-2 py-0.5 rounded-full text-xs ${getMaturityColor(score, 'bg')} ${getMaturityColor(score, 'text')}`}>{score.toFixed(1)}</span> */}
           {isExpanded ? <ChevronUp className="text-gray-500"/> : <ChevronDown className="text-gray-500"/>}
         </div>
       </button>
@@ -377,9 +380,10 @@ const DiagnosticInsights: React.FC = () => {
                         <h3 className="text-xl font-semibold text-gray-900">{category.category}</h3>
                         </div>
                         <div className="flex items-center space-x-4">
-                        <span className={`font-bold px-3 py-1 rounded-full text-sm ${getMaturityColor(calculateCategoryScore(category), 'bg')} ${getMaturityColor(calculateCategoryScore(category), 'text')}`}>
+                        {/* Score hidden as per request */}
+                        {/* <span className={`font-bold px-3 py-1 rounded-full text-sm ${getMaturityColor(calculateCategoryScore(category), 'bg')} ${getMaturityColor(calculateCategoryScore(category), 'text')}`}>
                             Score: {calculateCategoryScore(category).toFixed(1)}
-                        </span>
+                        </span> */}
                         {isExpanded ? <ChevronUp className="text-gray-500" /> : <ChevronDown className="text-gray-500" />}
                         </div>
                     </div>
