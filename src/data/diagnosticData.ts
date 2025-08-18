@@ -200,10 +200,30 @@ export const diagnosticData: AssessmentCategory[] = [
     {
         category: "AI Use Cases",
         focusAreas: [
-            { title: "Research", benchmarks: [], insights: ["The consultant used AI to research the medical specifics of a family member's condition and identify the top doctor who had invented the necessary procedure."], recommendedActions: [{ id: "AI-R-01", title: "Train SDRs and AEs to use AI tools to conduct deep pre-call research on a prospect's industry, company initiatives, and individual background to create hyper-personalized outreach.", priority: "Medium", severity: "Medium", complexity: "Medium" }] },
-            { title: "Messaging", benchmarks: [], insights: ["Leadership's vision is to move beyond static sequences and use AI to inject hyper-relevant content into sequence \"blueprints\" based on real-time signals."], recommendedActions: [{ id: "AI-M-01", title: "Integrate AI-powered messaging tools to help reps generate personalized email and LinkedIn steps within their sequences, tailored to the specific prospect and their buying signals.", priority: "Medium", severity: "High", complexity: "High" }] },
-            { title: "Strategic Account Planning", benchmarks: [], insights: ["AI can be used to analyze an account's data and suggest which personas to target, what messaging to use, and how to structure a multi-threaded outreach plan."], recommendedActions: [{ id: "AI-SAP-01", title: "Develop an AI-driven \"engagement plan\" model that analyzes an account and provides the sales team with a recommended, data-driven strategy for penetration.", priority: "High", severity: "Medium", complexity: "High" }] },
-            { title: "Call Transcript Analysis", benchmarks: [], insights: ["The team uses Gong for call recording and analysis. Enablement is \"living and breathing in that tool\" to proactively find coaching opportunities and identify trends in conversations."], recommendedActions: [{ id: "AI-CTA-01", title: "Formalize the use of Gong's AI capabilities for all managers to systematically review calls, identify coaching moments, and track rep adoption of new messaging and talk tracks.", priority: "High", severity: "Medium", complexity: "Medium" }] }
+            { 
+                title: "AI-Powered Research", 
+                benchmarks: [], 
+                insights: ["Best practice involves using AI to automate pre-call research, synthesizing data from LinkedIn, news, and company reports into concise briefs. This saves significant time and equips reps with hyper-relevant talking points, boosting engagement efficiency."], 
+                recommendedActions: [{ id: "AI-R-01", title: "Implement an AI-powered research workflow within the sales playbook. Train reps on specific AI prompting techniques to generate account summaries, identify key stakeholders, and uncover strategic initiatives, making research a repeatable, high-ROI activity.", priority: "Medium", severity: "Medium", complexity: "Medium" }] 
+            },
+            { 
+                title: "AI-Assisted Messaging", 
+                benchmarks: [], 
+                insights: ["Effective teams use AI as a 'writing co-pilot' to personalize outreach at scale, not just automate it. Best practices focus on using AI to generate variations, improve tone, and draft messages based on prospect data, augmenting—not replacing—rep creativity."], 
+                recommendedActions: [{ id: "AI-M-01", title: "Create and train on an 'AI-Assisted Messaging' framework. This includes best practices for using AI to A/B test subject lines, personalize opening sentences based on prospect activity, and rapidly convert generic marketing copy into persona-specific value propositions.", priority: "Medium", severity: "High", complexity: "High" }] 
+            },
+            { 
+                title: "AI for Strategic Account Planning", 
+                benchmarks: [], 
+                insights: ["Best practice shifts account planning from a static exercise to a dynamic strategy powered by AI. By analyzing CRM data, intent signals, and market trends, AI can efficiently identify whitespace opportunities, suggest key personas, and map out data-driven paths to decision-makers."], 
+                recommendedActions: [{ id: "AI-SAP-01", title: "Develop and implement an AI-driven 'Engagement Plan' model. This best practice involves using AI to analyze target accounts and generate a recommended outreach strategy, including talking points and a multi-threading approach, turning planning into an efficient, strategic weapon.", priority: "High", severity: "Medium", complexity: "High" }] 
+            },
+            { 
+                title: "AI for Call Analysis & Coaching", 
+                benchmarks: [], 
+                insights: ["Top-performing teams leverage AI-powered conversation intelligence (Gong) to scale coaching effectiveness. Instead of random call reviews, best practice involves using AI to automatically flag key moments—like effective objection handling or playbook adherence—allowing managers to focus coaching time efficiently."], 
+                recommendedActions: [{ id: "AI-CTA-01", title: "Integrate AI call analysis into the formal management operating rhythm. Implement manager dashboards in Gong to track adoption of new talk tracks, identify and share 'best practice' call snippets for team-wide training, and provide data-driven, scalable coaching.", priority: "High", severity: "Medium", complexity: "Medium" }] 
+            }
         ]
     }
 ];
