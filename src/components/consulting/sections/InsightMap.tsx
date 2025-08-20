@@ -11,6 +11,7 @@ import {
   ArcElement,
   PointElement,
   LineElement,
+  LineController,
 } from 'chart.js';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 
@@ -24,6 +25,7 @@ ChartJS.register(
   ArcElement,
   PointElement,
   LineElement,
+  LineController
 );
 
 const InsightMap: React.FC = () => {

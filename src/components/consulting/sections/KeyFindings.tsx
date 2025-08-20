@@ -1,5 +1,30 @@
 import React, { useState } from 'react';
 import { Settings, Workflow, Database, DollarSign, ChevronDown, ChevronUp, CheckCircle, AlertTriangle, Target } from 'lucide-react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+  LineController,
+} from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+  LineController
+);
 
 const KeyFindings: React.FC = () => {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
