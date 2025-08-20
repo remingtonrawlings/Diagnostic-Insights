@@ -152,6 +152,7 @@ const InsightMap: React.FC = () => {
         label: 'Avg Reply Rate (%)',
         data: [2.8, 2.86, 52.58, 11.88, 2.6, 0.7, 0.85, 3.85],
         backgroundColor: 'rgba(16, 185, 129, 0.6)',
+        borderColor: 'rgba(16, 185, 129, 1)',
         type: 'line',
         yAxisID: 'y1',
         tension: 0.2,
