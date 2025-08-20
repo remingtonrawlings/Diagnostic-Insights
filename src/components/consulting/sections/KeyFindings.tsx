@@ -1,28 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, Workflow, Database, DollarSign, ChevronDown, ChevronUp, CheckCircle, AlertTriangle, Target, Wrench } from 'lucide-react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement,
-} from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement
-);
+import { Settings, Workflow, Database, DollarSign, ChevronDown, ChevronUp, CheckCircle, AlertTriangle, Target } from 'lucide-react';
 
 const KeyFindings: React.FC = () => {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -30,14 +7,11 @@ const KeyFindings: React.FC = () => {
     process: false,
     data: false,
     strategy: false,
-    charts: false,
     major1: false,
     major2: false,
     major3: false,
     major4: false
   });
-
-  const [chartAnimationKey, setChartAnimationKey] = useState(0);
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev => {
@@ -45,11 +19,6 @@ const KeyFindings: React.FC = () => {
         ...prev,
         [section]: !prev[section]
       };
-      
-      // Only trigger chart animation when charts section is expanded
-      if (section === 'charts' && !prev[section]) {
-        setChartAnimationKey(prevKey => prevKey + 1);
-      }
       
       return newState;
     });
@@ -174,46 +143,6 @@ const KeyFindings: React.FC = () => {
     }
   ];
 
-  const impactProjectionData = {
-    labels: ['Current State', 'Month 1', 'Month 2', 'Month 3', 'Month 6'],
-    datasets: [
-      {
-        label: 'SDR Productivity (%)',
-        data: [55, 65, 75, 85, 95],
-        borderColor: 'rgba(59, 130, 246, 1)',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        tension: 0.1,
-      },
-      {
-        label: 'Process Efficiency (%)',
-        data: [45, 55, 70, 80, 90],
-        borderColor: 'rgba(16, 185, 129, 1)',
-        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-        tension: 0.1,
-      },
-    ],
-  };
-
-  const investmentROIData = {
-    labels: ['Technology', 'Process', 'Training', 'Personnel'],
-    datasets: [
-      {
-        label: 'Investment ($000)',
-        data: [120, 80, 45, 200],
-        backgroundColor: 'rgba(239, 68, 68, 0.6)',
-        borderColor: 'rgba(239, 68, 68, 1)',
-        borderWidth: 1,
-      },
-      {
-        label: 'Expected ROI ($000)',
-        data: [350, 280, 150, 600],
-        backgroundColor: 'rgba(34, 197, 94, 0.6)',
-        borderColor: 'rgba(34, 197, 94, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
   const getColorClasses = (color: string) => {
     const colors = {
       blue: 'bg-blue-50 border-blue-200',
@@ -245,20 +174,6 @@ const KeyFindings: React.FC = () => {
     };
     return colors[priority as keyof typeof colors];
   };
-
-  const getChartOptions = (animated: boolean = true) => ({
-    responsive: true,
-    maintainAspectRatio: false,
-    animation: animated ? {
-      duration: 1000,
-      easing: 'easeInOutQuart' as const,
-    } : false,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-      },
-    },
-  });
 
   const CollapsibleSection = ({ 
     section, 
@@ -371,40 +286,6 @@ const KeyFindings: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* Charts Section */}
-        <CollapsibleSection
-          section="charts"
-          isExpanded={expandedSections.charts}
-          onToggle={() => toggleSection('charts')}
-          icon={Settings}
-          title="Impact Projections & ROI Analysis"
-          color="blue"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-4">Projected Impact Over Time</h4>
-              <div className="h-80">
-                <Line 
-                  key={`impact-chart-${chartAnimationKey}`}
-                  data={impactProjectionData} 
-                  options={getChartOptions(true)} 
-                />
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-4">Investment vs Expected ROI</h4>
-              <div className="h-80">
-                <Bar 
-                  key={`roi-chart-${chartAnimationKey}`}
-                  data={investmentROIData} 
-                  options={getChartOptions(true)} 
-                />
-              </div>
-            </div>
-          </div>
-        </CollapsibleSection>
         
         {/* Additional Recommendations */}
         <div className="mb-8">
@@ -425,14 +306,7 @@ const KeyFindings: React.FC = () => {
                   color={recommendation.color}
                 >
                   <div className="space-y-3">
-                    {recommendation.actions.map((action, actionIndex) => (
-                      <div key={actionIndex} className="flex items-start space-x-3">
-                        <Wrench className="text-gray-400 mt-1 flex-shrink-0" size={16} />
-                        <p className="text-gray-700 leading-relaxed">
-                          <span className="font-medium">Action:</span> {action}
-                        </p>
-                      </div>
-                    ))}
+                    {/* Details removed as per request */}
                   </div>
                 </CollapsibleSection>
               );

@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp, AlertTriangle, CheckCircle, Target, Shield, BarChart2, Zap, TrendingUp, HelpCircle, X, ClipboardList, ArrowRightCircle, Sparkles, Lightbulb, Wrench } from 'lucide-react';
 import { diagnosticData, AssessmentCategory, FocusArea, RecommendedAction } from '../../../data/diagnosticData';
+import KeyFindings from './KeyFindings';
 
 const valueMap = {
   'High': 3,
@@ -326,6 +327,7 @@ const FocusAreaCard: React.FC<{ area: FocusArea }> = ({ area }) => {
 // --- MAIN COMPONENT ---
 const DiagnosticInsights: React.FC = () => {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('assessment');
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const scores = useMemo(() => {
@@ -351,57 +353,99 @@ const DiagnosticInsights: React.FC = () => {
     }, 100); // Delay to allow accordion to open
   };
 
+  const tabs = [
+    {
+      id: 'assessment',
+      title: 'Maturity Assessment',
+      icon: TrendingUp,
+    },
+    {
+      id: 'findings',
+      title: 'Key Findings & Recommendations',
+      icon: Lightbulb,
+    }
+  ];
+
   return (
     <div className="space-y-8">
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Diagnostic Insights: Maturity Assessment
+          Diagnostic Insights
         </h1>
         <p className="text-gray-600 mb-8">
-          An executive overview and detailed breakdown of findings across key operational categories, with maturity scores to highlight critical areas for improvement.
+          An executive overview and detailed breakdown of findings, maturity scores, and actionable recommendations.
         </p>
 
-        <DiagnosticOverview scores={scores} onCategoryClick={handleCategoryClick} />
-        
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-12">Detailed Diagnostic Findings</h2>
-        <div className="space-y-4">
-          {diagnosticData.map((category: AssessmentCategory) => {
-            const isExpanded = openCategory === category.category;
-            return (
-              <div key={category.category} ref={el => (categoryRefs.current[category.category] = el)}>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                    <button
-                    onClick={() => setOpenCategory(isExpanded ? null : category.category)}
-                    className={`w-full p-6 text-left transition-colors duration-200 ${isExpanded ? 'bg-blue-50' : 'bg-white hover:bg-gray-50'}`}
-                    >
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                        <BarChart2 className="text-blue-500" size={24} />
-                        <h3 className="text-xl font-semibold text-gray-900">{category.category}</h3>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                        {/* Score hidden as per request */}
-                        {/* <span className={`font-bold px-3 py-1 rounded-full text-sm ${getMaturityColor(calculateCategoryScore(category), 'bg')} ${getMaturityColor(calculateCategoryScore(category), 'text')}`}>
-                            Score: {calculateCategoryScore(category).toFixed(1)}
-                        </span> */}
-                        {isExpanded ? <ChevronUp className="text-gray-500" /> : <ChevronDown className="text-gray-500" />}
-                        </div>
-                    </div>
-                    </button>
-                    
-                    {isExpanded && (
-                    <div className="p-6 bg-white border-t border-gray-200">
-                        <div className="space-y-6">
-                        {category.focusAreas.map(area => <FocusAreaCard key={area.title} area={area} />)}
-                        </div>
-                    </div>
-                    )}
-                </div>
-              </div>
-            );
-          })}
+        {/* Tab Navigation */}
+        <div className="border-b border-gray-200 mb-8">
+          <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200 focus:outline-none ${
+                    isActive
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  }`}
+                >
+                  <Icon size={16} />
+                  <span>{tab.title}</span>
+                </button>
+              );
+            })}
+          </nav>
         </div>
       </div>
+      
+      {activeTab === 'assessment' && (
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <DiagnosticOverview scores={scores} onCategoryClick={handleCategoryClick} />
+          
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-12">Detailed Diagnostic Findings</h2>
+          <div className="space-y-4">
+            {diagnosticData.map((category: AssessmentCategory) => {
+              const isExpanded = openCategory === category.category;
+              return (
+                <div key={category.category} ref={el => (categoryRefs.current[category.category] = el)}>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                      <button
+                      onClick={() => setOpenCategory(isExpanded ? null : category.category)}
+                      className={`w-full p-6 text-left transition-colors duration-200 ${isExpanded ? 'bg-blue-50' : 'bg-white hover:bg-gray-50'}`}
+                      >
+                      <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                          <BarChart2 className="text-blue-500" size={24} />
+                          <h3 className="text-xl font-semibold text-gray-900">{category.category}</h3>
+                          </div>
+                          <div className="flex items-center space-x-4">
+                          {isExpanded ? <ChevronUp className="text-gray-500" /> : <ChevronDown className="text-gray-500" />}
+                          </div>
+                      </div>
+                      </button>
+                      
+                      {isExpanded && (
+                      <div className="p-6 bg-white border-t border-gray-200">
+                          <div className="space-y-6">
+                          {category.focusAreas.map(area => <FocusAreaCard key={area.title} area={area} />)}
+                          </div>
+                      </div>
+                      )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'findings' && (
+        <KeyFindings />
+      )}
     </div>
   );
 };

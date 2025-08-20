@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection }) =>
     },
     {
       id: 'insights',
-      title: 'Insights',
+      title: 'Quantitative Insights',
       icon: BarChart2,
       description: 'Qual & Quant Analysis'
     },
