@@ -58,7 +58,7 @@ const KeyFindings: React.FC = () => {
       actions: [
         'Hire a GTM Operations expert with deep tech stack background',
         'Implement the Outreach Engagement Panel in Salesforce',
-        'Audit and fix the Salesforce-Outreach-ZoomInfo-Gong-NUCs integration workflow'
+        'Assess and fix the Salesforce-Outreach-ZoomInfo-Gong-NUCs integration workflow'
       ]
     },
     {

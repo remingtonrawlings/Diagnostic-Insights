@@ -408,9 +408,9 @@ const ExecutiveSummaryContent: React.FC = () => {
       </div>
 
       <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-        <h3 className="font-semibold text-gray-900 mb-4">Audit Findings Structure</h3>
+        <h3 className="font-semibold text-gray-900 mb-4">Assessment Findings Structure</h3>
         <p className="text-gray-700 mb-4">
-          This comprehensive audit is organized into three main sections that build upon each other to provide actionable insights:
+          This comprehensive assessment is organized into three main sections that build upon each other to provide actionable insights:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center p-4 bg-white rounded-lg border border-gray-200">

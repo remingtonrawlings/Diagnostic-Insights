@@ -119,13 +119,13 @@ export const diagnosticData: AssessmentCategory[] = [
                 title: "Sales Engagement Sync",
                 benchmarks: [],
                 insights: ["The sync between Outreach and Salesforce is unreliable, particularly for contact status updates, meeting attribution, and opportunity data.", "Fix the template syntax in sequences where it's broken.", "Fix failed sequence states."],
-                recommendedActions: [{ id: "OS-SES-01", title: "Conduct a full audit of the Outreach-Salesforce integration, focusing on field mappings, triggers, and error logs to ensure data consistency.", priority: "High", severity: "High", complexity: "High" }]
+                recommendedActions: [{ id: "OS-SES-01", title: "Conduct a full assessment of the Outreach-Salesforce integration, focusing on field mappings, triggers, and error logs to ensure data consistency.", priority: "High", severity: "High", complexity: "High" }]
             },
             {
                 title: "Email Deliverability",
                 benchmarks: [],
                 insights: ["A critical issue was identified where many emails are not being delivered at all, not even reaching spam folders. This is a massive technical problem undermining a core outreach channel."],
-                recommendedActions: [{ id: "OS-ED-01", title: "Launch an immediate, \"Code Red\" (confidential) technical investigation into email deliverability, including domain reputation checks and system configuration audits.", priority: "High", severity: "High", complexity: "High" }]
+                recommendedActions: [{ id: "OS-ED-01", title: "Launch an immediate, \"Code Red\" (confidential) technical investigation into email deliverability, including domain reputation checks and system configuration assessments.", priority: "High", severity: "High", complexity: "High" }]
             },
             {
                 title: "Tech Stack Optimizations",
@@ -137,7 +137,7 @@ export const diagnosticData: AssessmentCategory[] = [
                 title: "Lead Routing",
                 benchmarks: [],
                 insights: ["There are technical issues with the lead routing process that require manual oversight to ensure leads are assigned correctly."],
-                recommendedActions: [{ id: "OS-LR-01", title: "Audit and fix the lead routing rules in the marketing automation platform and Salesforce to ensure accurate and timely assignment.", priority: "Medium", severity: "Medium", complexity: "Medium" }]
+                recommendedActions: [{ id: "OS-LR-01", title: "Assess and fix the lead routing rules in the marketing automation platform and Salesforce to ensure accurate and timely assignment.", priority: "Medium", severity: "Medium", complexity: "Medium" }]
             },
         ]
     },

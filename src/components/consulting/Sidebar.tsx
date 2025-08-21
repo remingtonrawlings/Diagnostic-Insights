@@ -49,7 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection }) =>
   return (
     <aside className="fixed left-0 top-20 h-[calc(100vh-5rem)] w-80 bg-white border-r border-gray-200 overflow-y-auto">
       <div className="p-6 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">Audit Findings</h1>
+        <h1 className="text-xl font-bold text-gray-900">Assessment Findings</h1>
         <p className="text-sm text-gray-600 mt-1">Capacity Utilization Analysis</p>
       </div>
       

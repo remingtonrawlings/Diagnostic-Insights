@@ -13,7 +13,7 @@ const ConsultingReadoutPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('executive-summary');
 
   useEffect(() => {
-    document.title = 'Audit Findings | OneViewLabs';
+    document.title = 'Assessment Findings | OneViewLabs';
   }, []);
 
   const renderContent = () => {

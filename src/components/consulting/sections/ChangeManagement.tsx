@@ -1,6 +1,8 @@
 import React from 'react';
 import { Users, Calendar, Play, Building, ArrowRight, CheckCircle, TrendingUp, Shield, Wrench, Zap } from 'lucide-react';
 
+type Color = 'blue' | 'green' | 'purple' | 'orange' | 'red';
+
 const ChangeManagement: React.FC = () => {
   const implementationPhases = [
     {
@@ -10,7 +12,7 @@ const ChangeManagement: React.FC = () => {
       color: 'red',
       items: [
         'Launch "Code Red" investigation into email deliverability.',
-        'Begin full audit of the Outreach-Salesforce sync to identify root causes of data errors.',
+        'Begin full assessment of the Outreach-Salesforce sync to identify root causes of data errors.',
         'Initiate vendor evaluation to replace ineffective data enrichment tools (LeadIQ).',
         'Announce a 60-day freeze on non-essential GTM initiatives to combat change fatigue and signal stability.'
       ]
@@ -69,21 +71,21 @@ const ChangeManagement: React.FC = () => {
     }
   ];
 
-  const getColorClasses = (color: string) => ({
+  const getColorClasses = (color: Color): string => ({
     blue: 'bg-blue-50 border-blue-200',
     green: 'bg-green-50 border-green-200',
     purple: 'bg-purple-50 border-purple-200',
     orange: 'bg-orange-50 border-orange-200',
     red: 'bg-red-50 border-red-200'
-  })[color as keyof ReturnType<typeof getColorClasses>];
+  } as const)[color];
 
-  const getIconColor = (color: string) => ({
+  const getIconColor = (color: Color): string => ({
     blue: 'text-blue-500',
     green: 'text-green-500',
     purple: 'text-purple-500',
     orange: 'text-orange-500',
     red: 'text-red-500'
-  })[color as keyof ReturnType<typeof getIconColor>];
+  } as const)[color];
 
   return (
     <div className="space-y-8">
@@ -104,10 +106,10 @@ const ChangeManagement: React.FC = () => {
               const Icon = phase.icon;
               return (
                 <div key={index} className="relative">
-                   <div className={`absolute -left-[42px] top-1.5 w-8 h-8 rounded-full ${getColorClasses(phase.color)} flex items-center justify-center`}>
-                    <Icon className={`${getIconColor(phase.color)}`} size={20} />
+                   <div className={`absolute -left-[42px] top-1.5 w-8 h-8 rounded-full ${getColorClasses(phase.color as Color)} flex items-center justify-center`}>
+                    <Icon className={`${getIconColor(phase.color as Color)}`} size={20} />
                   </div>
-                  <h3 className={`text-xl font-semibold ${getIconColor(phase.color)}`}>{phase.title}</h3>
+                  <h3 className={`text-xl font-semibold ${getIconColor(phase.color as Color)}`}>{phase.title}</h3>
                   <p className="text-gray-600 mt-1 mb-4">{phase.description}</p>
                   <div className="space-y-2">
                     {phase.items.map((item, itemIndex) => (
@@ -129,7 +131,7 @@ const ChangeManagement: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {nextSteps.map((step, index) => {
               return (
-                <div key={index} className={`p-6 rounded-lg border ${getColorClasses(step.color)}`}>
+                <div key={index} className={`p-6 rounded-lg border ${getColorClasses(step.color as Color)}`}>
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
                     <span className="text-sm font-medium px-2 py-1 bg-white rounded-full border border-gray-200">{step.timeline}</span>
